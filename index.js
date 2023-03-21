@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 const app = express();
 const products_route = require("./routes/products")
@@ -9,6 +8,7 @@ const URI = "mongodb+srv://xyz:123@cluster09.s3qnfvf.mongodb.net/shoping?retryWr
 
 app.get("/", (req, res) => {
     res.send("Connected. api path :- /api/products")
+    console.log("Connected to MongoDB");
 });
 
 // middleware or To set route
@@ -19,7 +19,7 @@ const start = async () => {
     try {
         await connectDB(URI);
         app.listen(PORT, () => {
-            console.log(`Conneced to Port : ${PORT}`)
+            console.log(`Server connected to http://localhost:${PORT}`)
         })
     } catch (error) {
         console.log(error)

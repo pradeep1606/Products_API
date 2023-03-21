@@ -1,6 +1,7 @@
 const Product = require("../models/product");
 
 const getAllProducts = async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     const { company, name, featured, sort, select } = req.query;
     const queryObject = {};
     if (company) { queryObject.company = company }
@@ -31,7 +32,7 @@ const getAllProducts = async (req, res) => {
 };
 
 const getAllProductsTesting = async (req, res) => {
-    const Products = await Product.find(req.query).select("name price");
+    const Products = await Product.find(req.query);
     res.status(200).json({ Products });
 };
 
