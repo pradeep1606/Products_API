@@ -18,8 +18,8 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
     image: {
-        type: String,
-        default: "https://rukminim1.flixcart.com/image/416/416/kkec4280/monitor/k/j/3/lc32g75tqswxxl-lc32g75tqswxxl-samsung-original-imafzqvfsxddw8kw.jpeg?q=70",
+        type: [String],
+        required: true,
     },
     description: {
         type: String,
@@ -29,9 +29,21 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: "shop",
     },
+    rating: {
+        type: Number,
+        default: "5.0",
+    },
+    reviews: {
+        type: Number,
+        default: "100",
+    },
     featured: {
         type: Boolean,
         default: false,
+    },
+    featured_Name: {
+        type: String,
+        default: "Online Store",
     },
     // company: {
     //     type: String,

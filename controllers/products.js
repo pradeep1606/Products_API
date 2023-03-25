@@ -2,9 +2,12 @@ const Product = require("../models/product");
 
 const getAllProducts = async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    const { company, name, featured, sort, select } = req.query;
+    const { id, company, name, featured, sort, select, category } = req.query;
     const queryObject = {};
-    if (company) { queryObject.company = company }
+
+    if (id) { queryObject._id = id }  
+    if (company) { queryObject.company = company }  
+    if (category) { queryObject.category = category }
     if (featured) { queryObject.featured = featured }
     if (name) { queryObject.name = { $regex: name, $options: "p" } }
 
@@ -22,7 +25,7 @@ const getAllProducts = async (req, res) => {
     }
 
     let page = Number(req.query.page) || 1;
-    let limit = Number(req.query.limit) || 5;
+    let limit = Number(req.query.limit) || 50;
     let skip = (page - 1) * limit;
 
     apiData = apiData.skip(skip).limit(limit);
