@@ -1,7 +1,7 @@
 const Product = require("../models/product");
 
 const getAllProducts = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', 'https://online-store-ecom.netlify.app');
     const { id, company, name, featured, sort, select, category } = req.query;
     const queryObject = {};
 
